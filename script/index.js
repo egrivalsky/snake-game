@@ -17,9 +17,17 @@ let intervalTime = 0;
 let interval = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.addEventListener("heyup", control);
+    document.addEventListener("keyup", control);
     createBoard();
     startGame();
     playAgain.addEventListener("click", replay);
 
 });
+
+function createBoard() {
+    popup.style.display = "none";
+    for (let i = 0; i < 100; i++) {
+        let div = document.createElement("div");
+        grid.appendChild(div);
+    }
+}
