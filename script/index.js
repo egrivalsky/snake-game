@@ -16,7 +16,7 @@ let speed = 0.8;
 let intervalTime = 0;
 let interval = 0;
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("keyup", control);
     createBoard();
     startGame();
@@ -26,8 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function createBoard() {
     popup.style.display = "none";
+    console.log("createboard invoked")
     for (let i = 0; i < 100; i++) {
         let div = document.createElement("div");
         grid.appendChild(div);
     }
+}
+
+function startGame() {
+    let squares = document.querySelectorAll(".grid div");
+    randomApple(squares)
+        direction = 1;
+        scoreDisplay.innerHTML= score;
+        intervalTime = 1000;
+        currentSnake = [2, 1, 0]
+        currentIndex = 0;
+        currentSnake.forEach((index) => squares[index].classList.add("snake"));
+        interval = setInterval(moveOutcome, intervalTime);
 }
