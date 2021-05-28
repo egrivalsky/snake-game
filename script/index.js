@@ -113,6 +113,12 @@ function control(e) {
     }
   }
 
+  //makes buttons work
+up.addEventListener("click", () => (direction = -width));
+bottom.addEventListener("click", () => (direction = +width));
+left.addEventListener("click", () => (direction = -1));
+right.addEventListener("click", () => (direction = 1));
+
   //replay function
 
   function replay() {
