@@ -64,3 +64,16 @@ function moveSnake(squares) {
     eatApple(squares, tail);
     squares[currentSnake[0]].classList.add("snake")
 }
+
+function checkForHits(squares) {
+    if (
+        (currentSnake[0] + width >= width * width && direction === width) ||
+        (currentSnake[0] % width === - 1 && direction === 1) ||
+        (currentSnake[0] % width === 0 && direction === -1) ||
+        squares[currentSnake[0] + direction].classList.contains("snake")
+    ){
+        return true;    
+    } else {
+        return false;
+    }
+}
