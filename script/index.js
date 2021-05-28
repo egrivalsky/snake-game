@@ -70,6 +70,7 @@ function checkForHits(squares) {
         (currentSnake[0] + width >= width * width && direction === width) ||
         (currentSnake[0] % width === - 1 && direction === 1) ||
         (currentSnake[0] % width === 0 && direction === -1) ||
+        (currentSnake[0] - width <= 0 && direction === -width) ||
         squares[currentSnake[0] + direction].classList.contains("snake")
     ){
         return true;    
@@ -77,3 +78,18 @@ function checkForHits(squares) {
         return false;
     }
 }
+
+function eatApple(squares, tail) {
+    if (squares[currentSnake[0]].classList.contains("apple")) {
+        squares[currentSnake[0]].classList.remove("apple");
+        squares[tail].classList.add("snake");
+        currentSnake.push(tail);
+        randomApple(squares);
+        score++;
+        scoreDisplay.textContent = score;
+        clearInterval(interval);
+        intervalTime = intervalTime * speed;
+        interval = setInterval(moveOutcome, intervalTime);
+    }
+}
+
