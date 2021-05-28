@@ -5,7 +5,7 @@ let scoreDisplay = document.querySelector(".scoreDisplay");
 let left = document.querySelector(".left");
 let right = document.querySelector(".right");
 let up = document.querySelector(".up");
-let down = document.querySelector(".down");
+let bottom = document.querySelector(".down");
 let width = 10;
 let currentIndex = 0;
 let appleIndex = 0;
@@ -35,11 +35,12 @@ function createBoard() {
 
 function startGame() {
     let squares = document.querySelectorAll(".grid div");
+    console.log("startGame function hit")
     randomApple(squares)
         direction = 1;
         scoreDisplay.innerHTML= score;
         intervalTime = 1000;
-        currentSnake = [2, 1, 0]
+        currentSnake = [2, 1, 0];
         currentIndex = 0;
         currentSnake.forEach((index) => squares[index].classList.add("snake"));
         interval = setInterval(moveOutcome, intervalTime);
@@ -58,7 +59,7 @@ function moveOutcome() {
 
 function moveSnake(squares) {
     let tail = currentSnake.pop();
-    squares(tail).classList.remove("snake");
+    squares[tail].classList.remove("snake");
     currentSnake.unshift(currentSnake[0] + direction);
     //movement ends here
     eatApple(squares, tail);
